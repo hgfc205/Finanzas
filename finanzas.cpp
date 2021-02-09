@@ -1,29 +1,31 @@
-
 #include <iostream>
 #include <conio.h>
 using namespace std;
 
-int money[100], quincena[100][6], cont, cont2;
+int money[100], quincena[100][6], cont=0;
 void dinero();
 void gastos();
+void tres();
 
 int main(){
 	int A=1, opcion;
 	
-	while(A==1){		
+	while(A==1){
+		system("cls");
 		cout<<"Bievenido a finanzas"<<endl;
-		cout<<endl;
-		cout<<"Opciones a realizar: "<<endl;
+		cout<<"Presupuesto: "<<money[cont]<<endl;
+		cout<<endl<<"Opciones a realizar: "<<endl;
 		cout<<"1- Agregar su nueva quincena"<<endl;
 		cout<<"2- Gastos y deducciones"<<endl;
-		cout<<"3- Historial de gastos"<<endl;
+		cout<<"3- Total de gastos"<<endl;
 		cout<<"A continuación digite la opcion que desea a realizar: ";
 		cin>>opcion;
 		
-		if (opcion>3){
+		if (opcion>4){
 			system("cls");
 			cout<<"Ha ingresado un digito incorrecto"<<endl;
 			cout<<"Favor de ingresar el digito correcto"<<endl;
+			getch();
 		}else{
 			system("cls");
 			switch(opcion){
@@ -31,7 +33,10 @@ int main(){
 					dinero();
 				break;
 				case 2:
-					
+					gastos();
+				break;
+				case 3:
+					tres();
 				break;
 			}
 		}
@@ -44,6 +49,7 @@ void dinero(){
 	cout<<"ingrese la cantidad ganada en la quincena: ";
 	cin>>money[cont];
 	cont++;
+	getch();
 }
 
 void gastos(){
@@ -74,5 +80,18 @@ void gastos(){
 		quincena[cont][0]=quincena[cont][0]+gasto;
 		money[cont]=money[cont]-gasto;
 	}
-	
+	getch();
+}
+
+void tres(){
+	cout<<"Total de gastos en la quincena: "<<endl;
+	cout<<"\n---------------------------------------\n";
+	cout<<"1- Hogar:                  $ "<<quincena[cont][1]<<endl;
+	cout<<"2- Gasolina y transporte:  $ "<<quincena[cont][2]<<endl;
+	cout<<"3- Restaurantes:           $ "<<quincena[cont][3]<<endl;
+	cout<<"4- Entretenimiento:        $ "<<quincena[cont][4]<<endl;
+	cout<<"5- Otros:                  $ "<<quincena[cont][5]<<endl;
+	cout<<endl;
+	cout<<"Total gastado: $ "<<quincena[cont][0]<<endl;
+	getch();
 }
