@@ -47,8 +47,8 @@ int main(){
 
 void dinero(){
 	cout<<"ingrese la cantidad ganada en la quincena: ";
-	cin>>money[cont];
 	cont++;
+	cin>>money[cont];
 	getch();
 }
 
@@ -65,7 +65,7 @@ void gastos(){
 	cin>>sector;
 	
 	if(sector<6){
-		cout<<endl<<"Ingrese la cantidad de dinero: ";
+		cout<<endl<<"Ingrese la cantidad de dinero: $ ";
 		cin>>gasto;
 		
 		while(gasto>money[cont]){
@@ -76,7 +76,7 @@ void gastos(){
 			cout<<endl<<"Ingrese la cantidad de dinero: ";
 			cin>>gasto;
 		}
-		quincena[cont][sector]=quincena[cont][sector]+gastos;
+		quincena[cont][sector]+=gasto;
 		quincena[cont][0]=quincena[cont][0]+gasto;
 		money[cont]=money[cont]-gasto;
 	}
@@ -94,4 +94,4 @@ void tres(){
 	cout<<endl;
 	cout<<"Total gastado: $ "<<quincena[cont][0]<<endl;
 	getch();
-}
+}     
